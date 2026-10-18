@@ -132,10 +132,10 @@ div[class*="st-key-ask-examples"] [data-testid^="stBaseButton"] p {
 
 /* ── plant card ── */
 .pcard { border:1px solid var(--line); border-radius:16px; padding:.7rem; background:#fff; display:flex; gap:.7rem; min-height:215px; }
-.pcard.embedded { position:relative; height:250px; box-sizing:border-box;
+.pcard.embedded { position:relative; height:280px; box-sizing:border-box;
   border:0; border-radius:0; padding:0; background:transparent; min-height:0; }
 div[class*="st-key-plant-card-"] { border:1px solid var(--line); border-radius:16px; padding:.8rem;
-  background:#fff; margin-bottom:.9rem; height:280px; min-height:280px; max-height:280px;
+  background:#fff; margin-bottom:.9rem; height:310px; min-height:310px; max-height:310px;
   box-sizing:border-box; overflow:hidden; position:relative; }
 div[class*="st-key-plant-card-"] .stVerticalBlock { gap:.5rem !important; }
 div[class*="st-key-plant-card-"] .stButton > button { width:100%; }
@@ -151,7 +151,8 @@ div[class*="st-key-delete-plant-"] [data-testid^="stBaseButton"] {
 .pcard.embedded .row b { display:-webkit-box; -webkit-box-orient:vertical; overflow:hidden; }
 .pcard.embedded .nm { -webkit-line-clamp:1; }
 .pcard.embedded .sp, .pcard.embedded .row b { -webkit-line-clamp:2; }
-.pcard.embedded .foot { position:absolute; left:calc(84px + .7rem); bottom:.6rem; margin:0; }
+.pcard.embedded > div:nth-child(2) { display:flex; flex-direction:column; min-height:0; }
+.pcard.embedded .foot { position:static; margin-top:auto; padding-top:.3rem; }
 .pcard .pic { width:84px; flex:none; } .pcard .pic img, .pcard .pic .ph { width:84px; height:150px; object-fit:cover;
   border-radius:12px; background:var(--mint); display:flex; align-items:center; justify-content:center; font-size:2rem; }
 .pcard .nm { font-weight:600; font-size:1.02rem; } .pcard .sp { color:var(--muted); font-size:.82rem; margin-bottom:.35rem; }

@@ -128,6 +128,8 @@ def plant_select(label: str = "Plant") -> dict:
 
 @st.dialog("Add a plant")
 def add_plant_dialog():
+    # Dialog reruns do not necessarily rerun setup(), which selects the current graph.
+    db.use_tenant(st.session_state.get("tenant", ""))
     name = st.text_input("Name", placeholder="e.g. Ficus")
     species = st.text_input("Species (optional)")
     photo = st.file_uploader("Plant photo (optional)", type=["png", "jpg", "jpeg", "webp"])

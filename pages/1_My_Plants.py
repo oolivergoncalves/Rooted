@@ -2,7 +2,7 @@
 import streamlit as st
 
 from agents.vocab import describe_observation, to_label
-from graph import queries
+from graph import db, queries
 from services import plant_service
 from services.utils import fmt_datetime, session_label
 from ui import components as c
@@ -14,6 +14,7 @@ layout.page_header(session, "My Plants", "Every plant keeps its own history.", t
 
 @st.dialog("Remove plant?")
 def confirm_remove_plant(plant_id: str, plant_name: str):
+    db.use_tenant(st.session_state.get("tenant", ""))
     st.write(f"Remove **{plant_name}** and permanently delete its care history, observations, tasks, and agent records?")
     cancel, confirm = st.columns(2)
     with cancel:

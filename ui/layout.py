@@ -1,6 +1,7 @@
 """Shared page layout, session setup, sidebar, header, and dialogs."""
 from datetime import datetime
 from html import escape
+import logging
 from pathlib import Path
 from uuid import uuid4
 
@@ -21,6 +22,7 @@ NAV = [
     ("History", "pages/6_History.py", "history"),
     ("Settings", "pages/7_Settings.py", "settings"),
 ]
+logger = logging.getLogger(__name__)
 
 
 def setup() -> dict:
@@ -45,6 +47,9 @@ def setup() -> dict:
         st.session_state["session"] = session_service.current_or_new_session()
     session = st.session_state["session"]
     _sidebar(session)
+    added_plant = st.session_state.pop("plant_added", None)
+    if added_plant:
+        st.success(f"{added_plant} was added to this garden.")
     return session
 
 
@@ -142,9 +147,17 @@ def add_plant_dialog():
                 upload_dir.mkdir(parents=True, exist_ok=True)
                 photo_path = f"uploads/{uuid4().hex}{extension}"
                 (ASSETS / photo_path).write_bytes(photo.getvalue())
-            plant = plant_service.add_plant(name, species, loc, photo=photo_path)
-            st.session_state["selected_plant"] = plant["id"]
-            st.rerun()
+            try:
+                plant = plant_service.add_plant(name, species, loc, photo=photo_path)
+                if not plant:
+                    raise RuntimeError("The plant was not returned after creation.")
+            except Exception:
+                logger.exception("Could not save a plant in graph %s", db.graph_name())
+                st.error("The plant could not be saved. Check the FalkorDB connection and try again.")
+            else:
+                st.session_state["selected_plant"] = plant["id"]
+                st.session_state["plant_added"] = plant["name"]
+                st.rerun()
 
 
 def show_coordinator_result(result: dict):

@@ -41,10 +41,10 @@ a[data-testid="stPageLink-NavLink"][aria-current="page"] { background:#dfe3d2; f
 .mascot { width:100%; border-radius:16px; margin-top:.8rem; mix-blend-mode:multiply; }
 section[data-testid="stSidebar"] .stButton > button { width:100%; }
 section[data-testid="stSidebar"] div[class*="st-key-sidebar-new-session-button"] .stButton {
-  display:flex; justify-content:center;
+  display:flex; width:100%; justify-content:center; align-items:center;
 }
 section[data-testid="stSidebar"] div[class*="st-key-sidebar-new-session-button"] .stButton > button {
-  width:85% !important;
+  width:85% !important; margin-inline:auto !important; justify-content:center; text-align:center;
 }
 
 /* ── Buttons ── */

@@ -37,6 +37,10 @@ def list_gardens() -> list[str]:
     return sorted(set(gardens), key=lambda g: (g != "", g))
 
 
+def current_tenant() -> str:
+    return _tenant.get()
+
+
 def graph_name() -> str:
     base = os.getenv("FALKORDB_GRAPH", "rooted")
     tenant = _tenant.get()

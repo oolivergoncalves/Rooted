@@ -15,6 +15,10 @@ layout.page_header(session, "Ask the Graph",
                    "The Coordinator Agent answers by walking recorded connections. It never writes Cypher.",
                    title_class="greet care-greet")
 
+if not queries.list_plants():
+    st.info("This garden has no plants yet. Add one from Home (＋ Add Plant) to ask questions about it.")
+    st.stop()
+
 st.markdown('<div style="height: 1rem"></div>', unsafe_allow_html=True)
 
 EXAMPLES = {

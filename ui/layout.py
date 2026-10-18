@@ -108,7 +108,9 @@ def plant_select(label: str = "Plant") -> dict:
     """Plant selector that remembers the selection across pages."""
     plants = queries.list_plants()
     if not plants:
-        st.info("There are no plants in this garden yet. Add one from My Plants to continue.")
+        st.info("This garden has no plants yet. Press ＋ Add Plant to add the first one.")
+        if st.button("＋ Add Plant", key="add_plant_empty", type="primary"):
+            add_plant_dialog()
         st.stop()
     ids = [p["id"] for p in plants]
     names = {p["id"]: p["name"] for p in plants}

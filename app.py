@@ -26,6 +26,11 @@ cards = [("🍃", counts["plants"], "Plants", "mint"), ("📋", counts["pending"
 for col, (icon, value, label, tone) in zip(cols, cards):
     col.markdown(c.stat_card(icon, value, label, tone), unsafe_allow_html=True)
 
+if counts["plants"] == 0:
+    st.write("No plants in this garden yet. Press ＋ Add Plant to add your first one.")
+    if st.button("＋ Add Plant", type="primary", key="home_add_plant"):
+        layout.add_plant_dialog()
+
 st.markdown('<div class="dashboard-gap"></div>', unsafe_allow_html=True)
 
 left, right = st.columns([2.1, 1], gap="medium")

@@ -76,7 +76,12 @@ The LLM integration is optional. Without an API key, Rooted uses its rule-based 
 streamlit run app.py
 ```
 
-On a new, empty graph, Rooted creates its base data on startup: the demo user, three agents, procedures, locations, and three sample plants. It does not automatically load care events or observations.
+On the default graph, Rooted creates its base data on startup: the demo user, three agents, procedures, locations, and three sample plants. Newly created garden graphs receive the base data but start without sample plants. Care events and observations are never loaded automatically.
+
+## Try it in 2 minutes
+
+1. In the sidebar, choose **Garden**, or open **Settings** and create a garden (for example, `judge1`). A new garden starts **empty**.
+2. On **Home**, press **＋ Add Plant** and add a plant. Then open **My Plants → Record care** and record that it was watered.
 
 ## Demo walkthrough
 

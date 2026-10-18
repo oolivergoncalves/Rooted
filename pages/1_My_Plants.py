@@ -29,7 +29,7 @@ def confirm_remove_plant(plant_id: str, plant_name: str):
 
 _, add_col = st.columns([5, 1])
 with add_col:
-    if st.button("＋ Add Plant", type="primary", use_container_width=True):
+    if st.button("＋ Add Plant", type="primary", use_container_width=True, key="add_plant_top"):
         layout.add_plant_dialog()
 
 summaries = plant_service.all_summaries()

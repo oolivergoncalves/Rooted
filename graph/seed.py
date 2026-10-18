@@ -43,8 +43,10 @@ PROCEDURES = [
 ]
 
 
-def ensure_base():
-    """Ensure base data exists; safe to call each time the app starts."""
+def ensure_base(sample_plants: bool | None = None):
+    """Ensure base data exists; sample plants are only added to the default garden."""
+    if sample_plants is None:
+        sample_plants = not db.current_tenant()
     queries.ensure_indexes()
     queries.upsert_user(USER_ID, "CapybaraBR")
     for agent_id in AGENT_ORDER:
@@ -54,7 +56,7 @@ def ensure_base():
         queries.upsert_procedure(proc_id, trigger, action, COORDINATOR_AGENT, desc)
     for loc_id, name, light in LOCATIONS:
         queries.upsert_location(loc_id, name, light)
-    for pid, name, species, photo, loc_id in PLANTS:
+    for pid, name, species, photo, loc_id in (PLANTS if sample_plants else []):
         if not queries.get_plant(pid):
             queries.create_plant(pid, name, species, now_iso(), photo, USER_ID)
             loc = next(l for l in LOCATIONS if l[0] == loc_id)

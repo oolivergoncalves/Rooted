@@ -85,9 +85,11 @@ def _sidebar(session: dict):
             st.caption(f"A new session starts automatically after {session_service.IDLE_MINUTES // 60} hours "
                        "without activity. You can also start one now with the button.")
         with st.container(key="sidebar-new-session-button"):
-            if st.button("Start New Session"):
-                st.session_state["session"] = session_service.start_session()
-                st.rerun()
+            _, session_button, _ = st.columns([0.5, 6, 0.5], gap="small")
+            with session_button:
+                if st.button("Start New Session", use_container_width=True):
+                    st.session_state["session"] = session_service.start_session()
+                    st.rerun()
         mascot = img_uri("capybara")
         if mascot:
             st.markdown(f'<img class="mascot" src="{mascot}">', unsafe_allow_html=True)

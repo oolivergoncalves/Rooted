@@ -40,13 +40,6 @@ a[data-testid="stPageLink-NavLink"][aria-current="page"] { background:#dfe3d2; f
 .sess-pill i { width:8px; height:8px; border-radius:50%; background:#4aa35e; display:inline-block; }
 .mascot { width:100%; border-radius:16px; margin-top:.8rem; mix-blend-mode:multiply; }
 section[data-testid="stSidebar"] .stButton > button { width:100%; }
-section[data-testid="stSidebar"] div[class*="st-key-sidebar-new-session-button"] .stButton {
-  display:flex; width:100%; justify-content:center; align-items:center;
-}
-section[data-testid="stSidebar"] div[class*="st-key-sidebar-new-session-button"] .stButton > button {
-  width:85% !important; margin-inline:auto !important; justify-content:center; text-align:center;
-}
-
 /* ── Buttons ── */
 .stButton > button, .stFormSubmitButton > button { border-radius:12px; border:1px solid var(--line); font-weight:600; }
 .stButton > button[kind="primary"], .stFormSubmitButton > button[kind="primary"],

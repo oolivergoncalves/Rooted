@@ -109,10 +109,10 @@ div[data-testid="stDialog"] h2, div[role="dialog"] h2 {
   font-family:'Espuma Pro Book','EspumaPro-Book',sans-serif !important; font-weight:400 !important;
 }
 div[class*="st-key-ask-examples"] [data-testid^="stBaseButton"] {
-  min-height:3rem; height:auto; padding:.45rem .65rem; white-space:normal;
+  min-height:3rem; height:auto; padding:.45rem .5rem; white-space:nowrap;
 }
 div[class*="st-key-ask-examples"] [data-testid^="stBaseButton"] p {
-  white-space:normal; overflow-wrap:anywhere; line-height:1.2; text-align:center;
+  white-space:nowrap; overflow-wrap:normal; line-height:1.2; text-align:center; font-size:.88rem;
 }
 
 /* ── stat cards ── */

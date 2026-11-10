@@ -236,5 +236,3 @@ ui/                    Shared layout, components, and theme
 tests/                 Agent, reasoning, session, and tenant tests
 assets/                Logo and plant images
 ```
-
-**AI assistance disclosure:** Codex assisted with frontend implementation.
